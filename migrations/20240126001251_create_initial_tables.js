@@ -10,6 +10,7 @@ exports.up = function (knex) {
 			table.string("password").notNullable();
 			table.datetime("added_date").notNullable();
 			table.timestamp("updated_at").defaultTo(knex.fn.now());
+			table.string("email").notNullable();
 			table.string("first_name").notNullable();
 			table.string("last_name").notNullable();
 		})
@@ -18,7 +19,7 @@ exports.up = function (knex) {
 			table.string("task").notNullable();
 			table.string("category").notNullable();
 			table.datetime("finish_date").notNullable();
-			table.integer("hours").notNullable();
+			table.integer("hours").notNullable().unsigned();
 			table.datetime("added_date").notNullable();
 			table.timestamp("updated_at").defaultTo(knex.fn.now());
 			table
