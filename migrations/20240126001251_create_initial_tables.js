@@ -20,7 +20,7 @@ exports.up = function (knex) {
 			table.string("category").notNullable();
 			table.datetime("finish_date").notNullable();
 			table.integer("hours").notNullable().unsigned();
-			table.datetime("added_date").notNullable();
+			table.datetime("added_date").notNullable().defaultTo(knex.fn.now());
 			table.timestamp("updated_at").defaultTo(knex.fn.now());
 			table
 				.integer("user_id")
