@@ -11,5 +11,7 @@ router.route("/").post(reminderController.addReminder);
 //DELETE requests
 
 //PUT requests
+router.route("/:id").put(reminderController.updateReminder);
+router.route("/complete/:id").put(reminderController.completeReminder);
 
 module.exports = router;
