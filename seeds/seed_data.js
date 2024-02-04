@@ -15,6 +15,7 @@
 const userData = require("../seed_data/users");
 const reminderData = require("../seed_data/reminders");
 const goalData = require("../seed_data/goals");
+const journalData = require("../seed_data/journal");
 
 exports.seed = function (knex) {
 	return knex("users")
@@ -33,5 +34,11 @@ exports.seed = function (knex) {
 		})
 		.then(() => {
 			return knex("goals").insert(goalData);
+		})
+		.then(() => {
+			return knex("journal").del();
+		})
+		.then(() => {
+			return knex("journal").insert(journalData);
 		});
 };

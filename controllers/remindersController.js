@@ -3,11 +3,47 @@ const config = require("../knexfile");
 const db = knex(config);
 
 const index = (req, res) => {
-	db("reminders")
-		.then((data) => {
-			res.status(200).json(data);
-		})
-		.catch((err) => res.status(400).send(`Error retrieving reminders: ${err}`));
+	const statusItems = ["all", "current", "complete"];
+	const categoryItems = ["all", "personal", "work", "school"];
+	let statusVal = {};
+	let categoryVal = {};
+
+	if (req.query.status == "current") {
+		statusVal = { status: "Not Started" };
+	} else if (req.query.status == "complete") {
+		statusVal = { status: "Complete" };
+	}
+
+	if (req.query.category == "personal") {
+		categoryVal = { category: "personal" };
+	} else if (req.query.category == "work") {
+		categoryVal = { category: "work" };
+	} else if (req.query.category == "school") {
+		categoryVal = { category: "school" };
+	}
+
+	if (
+		statusItems.includes(req.query.status) ||
+		categoryItems.includes(req.query.category)
+	) {
+		db("reminders")
+			.where(statusVal)
+			.andWhere(categoryVal)
+			.then((data) => {
+				res.status(200).json(data);
+			})
+			.catch((err) =>
+				res.status(400).send(`Error retrieving reminders: ${err}`)
+			);
+	} else {
+		db("reminders")
+			.then((data) => {
+				res.status(200).json(data);
+			})
+			.catch((err) =>
+				res.status(400).send(`Error retrieving reminders: ${err}`)
+			);
+	}
 };
 
 const addReminder = (req, res) => {

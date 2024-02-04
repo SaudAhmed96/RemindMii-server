@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 5050;
 
 const remindersRoute = require("./routes/remindersRoute");
 const goalsRoute = require("./routes/goalsRoute");
+const journalRoute = require("./routes/journalRoute");
 
 // const { CORS_ORIGIN } = process.env;
 // app.use(cors({ origin: CORS_ORIGIN }));
@@ -15,6 +16,7 @@ app.use(express.json());
 
 app.use("/reminders", remindersRoute);
 app.use("/goals", goalsRoute);
+app.use("/journal", journalRoute);
 
 app.get("/", (_req, res) => {
 	res.send("Welcome to RemindMii API");

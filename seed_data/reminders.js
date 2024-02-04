@@ -8,7 +8,7 @@ module.exports = [
 		added_date: "2024-01-23 00:00:00",
 		updated_at: "2024-01-23 00:00:00",
 		user_id: 1,
-		status: "In Progress",
+		status: "Not Started",
 	},
 	{
 		id: 2,
@@ -19,7 +19,7 @@ module.exports = [
 		added_date: "2024-01-23 00:00:00",
 		updated_at: "2024-01-23 00:00:00",
 		user_id: 1,
-		status: "In Progress",
+		status: "Not Started",
 	},
 	{
 		id: 3,
@@ -30,7 +30,7 @@ module.exports = [
 		added_date: "2024-01-23 00:00:00",
 		updated_at: "2024-01-23 00:00:00",
 		user_id: 1,
-		status: "In Progress",
+		status: "Not Started",
 	},
 	{
 		id: 4,
@@ -52,6 +52,6 @@ module.exports = [
 		added_date: "2024-01-23 00:00:00",
 		updated_at: "2024-01-23 00:00:00",
 		user_id: 2,
-		status: "In Progress",
+		status: "Not Started",
 	},
 ];

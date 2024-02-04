@@ -54,7 +54,7 @@ exports.up = function (knex) {
 			table.increments("id").primary();
 			table.string("title").notNullable();
 			table.string("entry").notNullable();
-			table.datetime("entry_date").notNullable();
+			table.datetime("entry_date").notNullable().defaultTo(knex.fn.now());
 			table.timestamp("updated_at").defaultTo(knex.fn.now());
 			table
 				.integer("user_id")
@@ -75,5 +75,6 @@ exports.down = function (knex) {
 	return knex.schema
 		.dropTable("reminders")
 		.dropTable("goals")
+		.dropTable("journal")
 		.dropTable("users");
 };
