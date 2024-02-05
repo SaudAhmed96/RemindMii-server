@@ -16,7 +16,7 @@ exports.up = function (knex) {
 		})
 		.createTable("reminders", (table) => {
 			table.increments("id").primary();
-			table.string("task").notNullable();
+			table.text("task").notNullable();
 			table.string("category").notNullable();
 			table.datetime("finish_date").notNullable();
 			table.integer("hours").notNullable().unsigned();
@@ -53,7 +53,7 @@ exports.up = function (knex) {
 		.createTable("journal", (table) => {
 			table.increments("id").primary();
 			table.string("title").notNullable();
-			table.string("entry").notNullable();
+			table.text("entry", ["longtext"]).notNullable();
 			table.datetime("entry_date").notNullable().defaultTo(knex.fn.now());
 			table.timestamp("updated_at").defaultTo(knex.fn.now());
 			table
